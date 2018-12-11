@@ -1,0 +1,21 @@
+<h4>Row count = {{rows}}</h4>
+<div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of Products | slice : 0 : [rows]; let i = index">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td><button (click)="deleteRow(i)">Delete row</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>
