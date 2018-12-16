@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MyTableHostComponent } from "./my-table/my-table-host.component";
+import { MyTableHostComponent } from "./my-table-host/my-table-host.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "lesson1", pathMatch: "full" },
