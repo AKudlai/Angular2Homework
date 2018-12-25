@@ -7,6 +7,7 @@ import { MyTableComponent } from './my-table/my-table.component';
 import { MyTableHostComponent } from './my-table-host/my-table-host.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCreateComponent } from './product-create/product-create.component'
+import { ProductService } from './services/product.service'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
