@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product'
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ProductService {
-
-  public Products: any = [
+let products: Array<Product> =
+  [
     { id: 1, name: 'product 1', price: 100, category: 'Category 1' },
     { id: 2, name: 'product 2', price: 200, category: 'Category 2' },
     { id: 3, name: 'product 3', price: 300, category: 'Category 3' },
@@ -18,5 +15,16 @@ export class ProductService {
     { id: 10, name: 'product 10', price: 1000, category: 'Category 1' }
   ];
 
-  constructor() { }
+let productPromise = Promise.resolve(products);
+
+@Injectable()
+export class ProductService {
+
+  getAll(): Promise<Product[]> {
+    return productPromise;
+  }
+
+  getProduct(id: number): Promise<Product> {
+    return productPromise.then(products => products.find(x => x.id == id));
+  }
 }

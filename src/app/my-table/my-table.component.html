@@ -1,7 +1,7 @@
 <div class=""><span>Row count = {{rows}}</span></div>
-<div class="">
-  <label>Category</label>
-  <select class="custom-select" [(ngModel)]="selected" (ngModelChange)="onSelect(selected)">
+<div class="form-group">
+  <label for="category">Filter by category</label>
+  <select name ="category" class="custom-select" [(ngModel)]="selected" (ngModelChange)="onSelect(selected)">
     <option value="all" selected> Select All </option>
     <option *ngFor="let option of options" [value]="option">{{option}}</option>
   </select>
@@ -14,6 +14,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Category</th>
         <th></th>
       </tr>
     </thead>
@@ -27,5 +28,5 @@
       </tr>
     </tbody>
   </table>
+  <app-product-create [Products]="Products" ngDefaultControl></app-product-create>
 </div>
-<div><app-product-create [Products]="Products" ngDefaultControl></app-product-create></div>

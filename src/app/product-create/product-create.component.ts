@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Product } from '../models/product'
 
 @Component({
   selector: 'app-product-create',
@@ -7,11 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProductCreateComponent implements OnInit {
 
-  @Input() Products: any;
+  @Input() Products: Product[];
 
-  private product: any;
+  private product: Product;
 
-  constructor() { this.product = { id: 11, name: 'product 11', price: '1100', category: 'Category 1'}; }
+  constructor() { this.product = { id: 10, name: 'product 10', price: 1000, category: 'Category 1' }}
 
   ngOnInit() {
   }
