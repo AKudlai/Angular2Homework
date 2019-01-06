@@ -13,7 +13,6 @@
   "dependencies": {
     "@angular/animations": "^7.1.4",
     "@angular/common": "^7.1.4",
-    "@angular/compiler": "^7.1.4",
     "@angular/core": "^7.1.4",
     "@angular/forms": "^7.1.4",
     "@angular/http": "^7.1.4",
@@ -31,12 +30,14 @@
     "popper": "^1.0.1",
     "popper.js": "^1.14.6",
     "rxjs": "^6.3.3",
+    "webpack-dev-server": "^3.1.14",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.11.4",
     "@angular/cli": "^7.1.4",
     "@angular/compiler-cli": "~7.1.4",
+    "@angular/compiler": "^7.1.4",
     "@angular/language-service": "~7.0.0",
     "@types/jasmine": "^2.8.14",
     "@types/jasminewd2": "~2.0.3",
