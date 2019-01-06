@@ -1,3 +1,9 @@
-<p>
-  product-details works!
-</p>
+<div *ngIf="product">
+  <h2>Selected product</h2>
+  id: {{product.id}}<br/>
+  Name: {{product.name}}<br/>
+  Price: {{product.price}}<br/>
+  Category: {{product.category}}<br/>
+
+  <button (click)="goToProducts()">Go back</button>
+</div>

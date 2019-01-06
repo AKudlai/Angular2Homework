@@ -10,7 +10,8 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductService } from './services/product.service';
 import { ProductAdminComponent } from './product-admin/product-admin.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { ProductViewComponent } from './product-view/product-view.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component'
     ProductCreateComponent,
     ProductAdminComponent,
     ProductDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    ProductViewComponent
 
   ],
   imports: [

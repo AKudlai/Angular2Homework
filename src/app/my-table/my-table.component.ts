@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product'
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-table',
@@ -17,7 +16,7 @@ export class MyTableComponent implements OnInit {
   public selected: string;
   public selectedData: Product[];
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService) {
     this.productService.getAll().then(result => {
       return this.products = result;
     });
@@ -35,10 +34,6 @@ export class MyTableComponent implements OnInit {
       this.selectedData = this.products;
     }
 
-  }
-
-  showDetails(selected: Product){
-    this.router.navigate(['product', selected.id])
   }
 
   deleteRow(index) {
