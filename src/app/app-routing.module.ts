@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MyTableHostComponent } from './my-table-host/my-table-host.component';
-import { ProductAdminComponent } from './product-admin/product-admin.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+
 import { HomeComponent } from './home/home.component';
-import { ProductViewComponent } from './product-view/product-view.component'
+import { MyTableHostComponent } from './lessons-1-4/my-table-host/my-table-host.component';
 
 const routes: Routes = [
   {
@@ -17,21 +15,9 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'products',
-    component: ProductViewComponent
-  },
-  {
-    path: 'product/:id',
-    component: ProductDetailsComponent
-  },
-  {
-    path: 'admin',
-    component: ProductAdminComponent
-  },
-  {
-    path: 'my-table',
+    path: "my-table",
     component: MyTableHostComponent
-  },
+  }
 ];
 
 @NgModule({
