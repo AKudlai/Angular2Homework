@@ -1,4 +1,10 @@
 <h2>Products</h2>
-<ul>
-  <li *ngFor="let product of products" (click)="showDetails(product)">{{product.name}}</li>
+<ul class="product">
+  <li *ngFor="let product of products" 
+    (click)="showDetails(product)"
+    [class.selected] = "isSelected(product)"
+    >{{product.name}}</li>
 </ul>
+
+<router-outlet></router-outlet>
+

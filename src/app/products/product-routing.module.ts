@@ -8,12 +8,18 @@ import { ProductViewComponent } from './product-view/product-view.component';
 const routing: Routes = [
     {
         path: 'products',
-        component: ProductViewComponent
+        component: ProductViewComponent,
+        children: [
+          {
+            path: ':id',
+            component: ProductDetailsComponent
+          }
+        ]
       },
-      {
-        path: 'product/:id',
-        component: ProductDetailsComponent
-      },
+      // {
+      //   path: 'product/:id',
+      //   component: ProductDetailsComponent
+      // },
       {
         path: 'admin',
         component: ProductAdminComponent

@@ -22,6 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   goToProducts() {
-    this.router.navigate(['products']);
+    let pId = this.product ? this.product.id : null
+    this.router.navigate(['products', { id: pId }]);
   }
 }

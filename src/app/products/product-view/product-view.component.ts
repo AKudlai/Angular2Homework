@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ProductService } from '../services/product.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-product-view',
@@ -10,17 +10,28 @@ import { Router } from '@angular/router';
 })
 export class ProductViewComponent implements OnInit {
 
-  public products: Product[]
-  constructor(private productService: ProductService, private router: Router) {
-    this.productService.getAll().then(result => {
-      return this.products = result;
+  public products: Product[];
+  private selectedId: number;
+
+  constructor(
+    private productService: ProductService, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {  }
+
+  ngOnInit() {
+    this.activatedRoute.params.forEach((params: Params) => {
+      this.selectedId = +params['id'];
+      this.productService
+        .getAll()
+        .then(result => this.products = result);
     });
   }
 
-  ngOnInit() {
+  showDetails(selected: Product) {
+    this.router.navigate(['products', selected.id])
   }
 
-  showDetails(selected: Product){
-    this.router.navigate(['product', selected.id])
+  isSelected(product: Product ) : boolean {
+    return product.id == this.selectedId;
   }
 }
