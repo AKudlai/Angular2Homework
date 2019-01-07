@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
+import { relative } from 'path';
 
 @Component({
   selector: 'app-product-details',
@@ -23,6 +24,6 @@ export class ProductDetailsComponent implements OnInit {
 
   goToProducts() {
     let pId = this.product ? this.product.id : null
-    this.router.navigate(['products', { id: pId }]);
+    this.router.navigate(['../', { id: pId }], { relativeTo: this.activatedRoute} );
   }
 }
