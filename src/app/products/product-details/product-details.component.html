@@ -1,9 +1,22 @@
 <div *ngIf="product">
   <h2>Selected product</h2>
-  id: {{product.id}}<br/>
-  Name: <input [(ngModel)]="editName"/> <br/>
-  Price: <input [(ngModel)]="editPrice"/> <br/>
-  Category: <input [(ngModel)]="editCategory"/> <br/>
-  <button (click)="saveProduct()">Save</button>
-  <button (click)="goToProducts()">Cancel</button>
+  id: {{product.id}}<br />
+  <form (ngSubmit)="saveProduct()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input class="form-control" id="name" name="name" type="text" #name="ngModel" [(ngModel)]="editName" />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input class="form-control" id="price" name="price" type="number" #price="ngModel" [(ngModel)]="editPrice" />
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input class="form-control" id="category" name="category" type="text" #category="ngModel" [(ngModel)]="editCategory" />
+    </div>
+
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn btn-default" (click)="goToProducts()">Cancel</button>
+  </form>
 </div>
