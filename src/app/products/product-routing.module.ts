@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { CanDeactivateGuardService } from '../services/can-deactivate-guard.service';
 
 const routing: Routes = [
   {
@@ -11,7 +12,8 @@ const routing: Routes = [
     children: [
       {
         path: ':id',
-        component: ProductDetailsComponent
+        component: ProductDetailsComponent,
+        canDeactivate: [CanDeactivateGuardService]
       }
     ]
   },

@@ -1,9 +1,9 @@
 <div *ngIf="product">
   <h2>Selected product</h2>
   id: {{product.id}}<br/>
-  Name: {{product.name}}<br/>
-  Price: {{product.price}}<br/>
-  Category: {{product.category}}<br/>
-
-  <button (click)="goToProducts()">Go back</button>
+  Name: <input [(ngModel)]="editName"/> <br/>
+  Price: <input [(ngModel)]="editPrice"/> <br/>
+  Category: <input [(ngModel)]="editCategory"/> <br/>
+  <button (click)="saveProduct()">Save</button>
+  <button (click)="goToProducts()">Cancel</button>
 </div>
