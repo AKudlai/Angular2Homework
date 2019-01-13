@@ -1,3 +1,8 @@
-<p>
-  admin-home works!
-</p>
+<h2>Admin</h2>
+
+<nav>
+  <a [routerLink]="[ './products']" routerLinkActive="active">Product admin</a>
+  <a [routerLink]="[ './users']" routerLinkActive="active">User admin</a>
+</nav>
+
+<router-outlet></router-outlet>

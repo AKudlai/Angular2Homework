@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProductModule } from './products/product.module';
 import { MyTableModule } from './lessons-1-4/lessons-1-4.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MyTableModule } from './lessons-1-4/lessons-1-4.module';
     AppRoutingModule,
     FormsModule,
     MyTableModule,
-    ProductModule
+    ProductModule,
+    AdminModule
   ],
   bootstrap: [AppComponent]
 })

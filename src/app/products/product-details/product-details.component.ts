@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
-import { relative } from 'path';
 
 @Component({
   selector: 'app-product-details',

@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
-import { ProductAdminComponent } from "./product-admin/product-admin.component";
+import { ProductsAdminComponent } from "./products-admin/products-admin.component";
 import { UsersAdminComponent } from "./users-admin/users-admin.component";
+import { CanActivate } from "@angular/router/src/utils/preactivation";
 
 @NgModule({
   imports: [
@@ -10,12 +11,13 @@ import { UsersAdminComponent } from "./users-admin/users-admin.component";
       {
         path: 'admin',
         component: AdminHomeComponent,
+        // canActivate: [CanActivate],
         children: [{
           path: '',
           children: [
-            { path: 'products', component: ProductAdminComponent },
+            { path: 'products', component: ProductsAdminComponent },
             { path: 'users', component: UsersAdminComponent },
-            { path: '', redirectTo: 'phrases', pathMatch: 'full' }
+            { path: '', redirectTo: 'products', pathMatch: 'full' }
           ]
         }]
       }
