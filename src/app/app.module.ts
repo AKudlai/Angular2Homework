@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductModule } from './products/product.module';
 import { MyTableModule } from './lessons-1-4/lessons-1-4.module';
 import { AdminModule } from './admin/admin.module';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdminModule } from './admin/admin.module';
     ProductModule,
     AdminModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuardService]
 })
 export class AppModule { }

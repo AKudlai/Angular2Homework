@@ -3,7 +3,7 @@ import { RouterModule } from "@angular/router";
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
 import { ProductsAdminComponent } from "./products-admin/products-admin.component";
 import { UsersAdminComponent } from "./users-admin/users-admin.component";
-import { CanActivate } from "@angular/router/src/utils/preactivation";
+import { AuthGuardService } from "../services/auth-guard.service";
 
 @NgModule({
   imports: [
@@ -11,7 +11,7 @@ import { CanActivate } from "@angular/router/src/utils/preactivation";
       {
         path: 'admin',
         component: AdminHomeComponent,
-        // canActivate: [CanActivate],
+        canActivate: [AuthGuardService],
         children: [{
           path: '',
           children: [
