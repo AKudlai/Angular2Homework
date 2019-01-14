@@ -1,22 +1,33 @@
-<div *ngIf="product">
+<div class="container" *ngIf="product">
   <h2>Selected product</h2>
   id: {{product.id}}<br />
-  <form (ngSubmit)="saveProduct()" #productForm="ngForm">
+  <form (ngSubmit)="saveProduct()" #productForm="ngForm" novalidate>
+    
     <div class="form-group">
       <label for="name">Name:</label>
-      <input class="form-control" id="name" name="name" type="text" #name="ngModel" [(ngModel)]="editName" />
+      <input class="form-control" id="name" name="name" type="text" #name="ngModel" required minlength="4" [(ngModel)]="editName" />
+      <div *ngIf="formErrors.name" class="alert alert-danger">
+				{{formErrors.name}}
+			</div>
     </div>
 
     <div class="form-group">
       <label for="price">Price:</label>
-      <input class="form-control" id="price" name="price" type="number" #price="ngModel" [(ngModel)]="editPrice" />
-    </div>
-    <div class="form-group">
-      <label for="category">Category:</label>
-      <input class="form-control" id="category" name="category" type="text" #category="ngModel" [(ngModel)]="editCategory" />
+      <input class="form-control" id="price" name="price" type="number" #price="ngModel" required [(ngModel)]="editPrice" />
+      <div *ngIf="formErrors.price" class="alert alert-danger">
+				{{formErrors.price}}
+			</div>
     </div>
 
-    <button type="submit" class="btn btn-default">Save</button>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input class="form-control" id="category" name="category" type="text" #category="ngModel" required [(ngModel)]="editCategory" />
+      <div *ngIf="formErrors.category" class="alert alert-danger">
+				{{formErrors.category}}
+			</div>
+    </div>
+
+    <button type="submit" class="btn btn-default" [disabled]="!productForm.form.valid">Save</button>
     <button class="btn btn-default" (click)="goToProducts()">Cancel</button>
   </form>
 </div>
