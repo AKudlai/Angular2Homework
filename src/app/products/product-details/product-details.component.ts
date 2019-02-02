@@ -51,11 +51,11 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
           this.editCategory = this.product.category;
         });
     });
-    this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    // this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
 
   ngAfterViewInit() {
-      this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
+      // this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
 
   onValueChanged(data?: any) {

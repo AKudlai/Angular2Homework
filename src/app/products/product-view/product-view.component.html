@@ -1,7 +1,7 @@
 <h2>Products</h2>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="col-2">
       <ul class="product">
         <li *ngFor="let product of products" (click)="showDetails(product)" [class.selected]="isSelected(product)">{{product.name}}</li>
       </ul>
