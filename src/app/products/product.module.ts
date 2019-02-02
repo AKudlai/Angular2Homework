@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductViewComponent } from './product-view/product-view.component';
@@ -8,16 +8,19 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductService } from '../products/services/product.service';
 
 import { ProductRoutingModule } from "./product-routing.module";
+import { ProductDetailsDdComponent } from './product-details-dd/product-details-dd.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ProductDetailsComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    ProductDetailsDdComponent
   ],
   providers: [ProductService]
 })

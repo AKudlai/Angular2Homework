@@ -28,7 +28,7 @@ export class ProductViewComponent implements OnInit {
   }
 
   showDetails(selected: Product) {
-    this.router.navigate([selected.id], {relativeTo: this.activatedRoute})
+    this.router.navigate([{ outlets: { 'first': [selected.id], 'second': [selected.id]}}], {relativeTo: this.activatedRoute})
   }
 
   isSelected(product: Product ) : boolean {
