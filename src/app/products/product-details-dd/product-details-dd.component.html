@@ -1,7 +1,7 @@
-<div class="container" *ngIf="product">
+<div class="container">
   <h2>Selected product</h2>
   id: <br />
-  <form [formGroup]="productDetailsForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="productDetailsForm" (ngSubmit)="onSubmit(productDetailsForm)">
     <div class="form-group">
       <label for="name">Name:</label>
       <input class="form-control" id="name" type="text" formControlName="name"/>
@@ -18,5 +18,6 @@
     </div>
 
     <input type="submit" class="btn btn-default" [disabled]="productDetailsForm.invalid" value="Save">
+    <button class="btn btn-default" (click)="goToProducts()">Cancel</button>
   </form>
 </div>

@@ -20,26 +20,36 @@ export class ProductDetailsDdComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ProductService) { }
 
   ngOnInit() {
-    this.activatedRoute.params.forEach((params: Params) => {
-      let id = +params['id'];
-      this.service
-        .getProduct(id)
-        .then(result => {
-          this.product = result;
-          this.editName = this.product.name;
-          this.editPrice = this.product.price;
-          this.editCategory = this.product.category;
-          this.productDetailsForm = new FormGroup({
-            name: new FormControl(this.editName),
-            price: new FormControl(this.editPrice),
-            category: new FormControl(this.editCategory)
-            });
+    this.activatedRoute.data.forEach((data: { product: Product }) => {
+      this.product = data.product;
+      this.editName = data.product.name;
+      this.editPrice = data.product.price;
+      this.editCategory = data.product.category;          
+      this.productDetailsForm = new FormGroup({
+        name: new FormControl(this.editName),
+        price: new FormControl(this.editPrice),
+        category: new FormControl(this.editCategory)
         });
-    });
+      });
   };
 
+  saveProduct(form) {
+    this.product.name = this.editName;
+    this.product.price = this.editPrice;
+    this.product.category = this.editCategory;
+    this.goToProducts();
+  }
+
+  goToProducts() {
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  }
+
   onSubmit(form) {
+    this.product.name = form.value.name;
+    this.product.price = form.value.price;
+    this.product.category = form.value.category;
     console.log(form.valid);
     console.log(form.value)
+    this.goToProducts();
   }
 }

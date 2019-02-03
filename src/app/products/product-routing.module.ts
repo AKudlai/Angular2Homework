@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CanDeactivateGuardService } from '../services/can-deactivate-guard.service';
 import { ProductDetailsDdComponent } from './product-details-dd/product-details-dd.component';
+import { ProductDetailsResolveService } from './services/product-details-resolve.service';
 
 const routing: Routes = [
   {
@@ -16,11 +17,17 @@ const routing: Routes = [
         path: ':id',
         component: ProductDetailsComponent,
         // canDeactivate: [CanDeactivateGuardService]
+        resolve: { 
+          product: ProductDetailsResolveService
+        }
       },
       {
         outlet: 'second',
         path: ':id',
-        component: ProductDetailsDdComponent        
+        component: ProductDetailsDdComponent,
+        resolve: { 
+          product: ProductDetailsResolveService
+        }        
       }
     ]
   },
