@@ -11,11 +11,13 @@ import { MyTableModule } from './lessons-1-4/lessons-1-4.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
