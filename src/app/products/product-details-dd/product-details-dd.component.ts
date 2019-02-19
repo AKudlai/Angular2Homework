@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Product } from '../models/product';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -16,20 +16,20 @@ export class ProductDetailsDdComponent implements OnInit {
   public editPrice: number;
   public editCategory: string;
   
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.activatedRoute.data.forEach((data: { product: Product }) => {
       this.product = data.product;
       this.editName = data.product.name;
       this.editPrice = data.product.price;
-      this.editCategory = data.product.category;          
-      this.productDetailsForm = new FormGroup({
-        name: new FormControl(this.editName, [Validators.required, Validators.minLength(4)]),
-        price: new FormControl(this.editPrice, Validators.required),
-        category: new FormControl(this.editCategory, Validators.required)
-        });
+      this.editCategory = data.product.category;
+      this.productDetailsForm = this.formBuilder.group({
+        name: [this.editName, [Validators.required, Validators.minLength(4)]],
+        price: [this.editPrice, Validators.required],
+        category: [this.editCategory, Validators.required]
       });
+    });
   };
 
   goToProducts() {

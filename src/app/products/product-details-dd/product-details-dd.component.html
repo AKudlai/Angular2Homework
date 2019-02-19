@@ -7,7 +7,7 @@
       <input class="form-control" id="name" type="text" formControlName="name" />
       <div *ngIf="productDetailsForm.get('name').hasError('required') 
       && productDetailsForm.get('name').touched" class="alert alert-danger">
-        Required field
+        Required field.
       </div>
       <div *ngIf="productDetailsForm.get('name').hasError('minlength') 
       && productDetailsForm.get('name').touched" class="alert alert-danger">
@@ -20,7 +20,7 @@
       <input class="form-control" id="price" type="number" formControlName="price" />
       <div *ngIf="productDetailsForm.get('price').hasError('required') 
       && productDetailsForm.get('price').touched" class="alert alert-danger">
-        Required field
+        Required field.
       </div>
     </div>
 
@@ -29,7 +29,7 @@
       <input class="form-control" id="category" formControlName="category" />
       <div *ngIf="productDetailsForm.get('category').hasError('required') 
       && productDetailsForm.get('category').touched" class="alert alert-danger">
-        Required field
+        Required field.
       </div>
     </div>
 
