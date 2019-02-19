@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from '../models/product';
-import { Params, ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details-dd',
@@ -17,7 +16,7 @@ export class ProductDetailsDdComponent implements OnInit {
   public editPrice: number;
   public editCategory: string;
   
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ProductService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.data.forEach((data: { product: Product }) => {
@@ -32,13 +31,6 @@ export class ProductDetailsDdComponent implements OnInit {
         });
       });
   };
-
-  saveProduct(form) {
-    this.product.name = this.editName;
-    this.product.price = this.editPrice;
-    this.product.category = this.editCategory;
-    this.goToProducts();
-  }
 
   goToProducts() {
     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
