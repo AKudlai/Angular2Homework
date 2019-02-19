@@ -10,13 +10,15 @@ import { ProductService } from '../products/services/product.service';
 import { ProductRoutingModule } from "./product-routing.module";
 import { ProductDetailsDdComponent } from './product-details-dd/product-details-dd.component';
 import { ProductDetailsResolveService } from "./services/product-details-resolve.service";
+import { CommentsRoutingModule } from "../comments/comments-routing.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     ProductRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommentsRoutingModule
   ],
   declarations: [
     ProductDetailsComponent,
