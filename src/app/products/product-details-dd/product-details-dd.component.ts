@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Product } from '../models/product';
-import { Params, ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details-dd',
@@ -17,28 +16,21 @@ export class ProductDetailsDdComponent implements OnInit {
   public editPrice: number;
   public editCategory: string;
   
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ProductService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.activatedRoute.data.forEach((data: { product: Product }) => {
       this.product = data.product;
       this.editName = data.product.name;
       this.editPrice = data.product.price;
-      this.editCategory = data.product.category;          
-      this.productDetailsForm = new FormGroup({
-        name: new FormControl(this.editName),
-        price: new FormControl(this.editPrice),
-        category: new FormControl(this.editCategory)
-        });
+      this.editCategory = data.product.category;
+      this.productDetailsForm = this.formBuilder.group({
+        name: [this.editName, [Validators.required, Validators.minLength(4)]],
+        price: [this.editPrice, Validators.required],
+        category: [this.editCategory, Validators.required]
       });
+    });
   };
-
-  saveProduct(form) {
-    this.product.name = this.editName;
-    this.product.price = this.editPrice;
-    this.product.category = this.editCategory;
-    this.goToProducts();
-  }
 
   goToProducts() {
     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
@@ -48,8 +40,6 @@ export class ProductDetailsDdComponent implements OnInit {
     this.product.name = form.value.name;
     this.product.price = form.value.price;
     this.product.category = form.value.category;
-    console.log(form.valid);
-    console.log(form.value)
     this.goToProducts();
   }
 }
