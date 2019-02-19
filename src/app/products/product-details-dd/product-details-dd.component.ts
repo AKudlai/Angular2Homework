@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from '../models/product';
 import { Params, ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
@@ -26,9 +26,9 @@ export class ProductDetailsDdComponent implements OnInit {
       this.editPrice = data.product.price;
       this.editCategory = data.product.category;          
       this.productDetailsForm = new FormGroup({
-        name: new FormControl(this.editName),
-        price: new FormControl(this.editPrice),
-        category: new FormControl(this.editCategory)
+        name: new FormControl(this.editName, [Validators.required, Validators.minLength(4)]),
+        price: new FormControl(this.editPrice, Validators.required),
+        category: new FormControl(this.editCategory, Validators.required)
         });
       });
   };
@@ -48,8 +48,6 @@ export class ProductDetailsDdComponent implements OnInit {
     this.product.name = form.value.name;
     this.product.price = form.value.price;
     this.product.category = form.value.category;
-    console.log(form.valid);
-    console.log(form.value)
     this.goToProducts();
   }
 }
