@@ -5,7 +5,7 @@
 			"name": "userName",
 			"type": "string",
 			"typeLabel": "string",
-			"required": false,
+			"required": true,
 			"id": "userName",
 			"order": 0
 		},
@@ -13,16 +13,16 @@
 			"name": "commentText",
 			"type": "string",
 			"typeLabel": "string",
-			"required": false,
+			"required": true,
 			"id": "commentText",
 			"order": 1
 		},
-		"Date": {
-			"name": "Date",
+		"date": {
+			"name": "date",
 			"type": "date",
 			"typeLabel": "date",
-			"required": false,
-			"id": "Date",
+			"required": true,
+			"id": "date",
 			"order": 2
 		}
 	}
