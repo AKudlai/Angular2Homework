@@ -15,10 +15,18 @@ export class CommentFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.buildForm();
   }
 
   onSubmit(form) {
     this.comment.userName = form.value;
     this.comment.commentText = form.value;
+  }
+
+  private buildForm(){
+    this.commentForm = this.formBuilder.group({
+      userName: ["", Validators.required],
+      commentText: ["", Validators.required]
+    })
   }
 }

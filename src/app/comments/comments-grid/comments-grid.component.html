@@ -1,6 +1,8 @@
-<div *ngFor="let comment of comments">
-  {{comment.id}}<br />
-  {{comment.userName}}<br />
-  {{comment.commentText}}<br />
-  {{comment.date}}<br />
+<div class="container">
+  <div *ngFor="let comment of comments">
+    ID: {{comment.id}} <br />
+    Name: {{comment.userName}}<br />
+    Text: {{comment.commentText}}<br />
+    Date: {{comment.date}}<br />
+  </div>
 </div>
