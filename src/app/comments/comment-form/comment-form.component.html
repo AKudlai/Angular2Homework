@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="commentForm">
   <h2>Add new comment:</h2>
-  <form>
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm)">
     <div class="form-group">
       <label for="username">Username:</label>
       <input class="form-control" id="username" type="text" formControlName="userName" />

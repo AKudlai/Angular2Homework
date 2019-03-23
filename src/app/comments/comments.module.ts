@@ -4,6 +4,7 @@ import { CommentFormComponent } from './comment-form/comment-form.component';
 import { CommentsViewComponent } from './comments-view/comments-view.component';
 import { CommentsGridComponent } from './comments-grid/comments-grid.component';
 import { CommentService } from './services/comment.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CommentService } from './services/comment.service';
     CommentsViewComponent, 
     CommentsGridComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [CommentService]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CommentModel } from '../models/comment';
+import { CommentService } from '../services/comment.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -11,16 +12,24 @@ export class CommentFormComponent implements OnInit {
 
   public commentForm: FormGroup;
   public comment: CommentModel;
+  public errorMessage: string;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: CommentService ) { }
 
   ngOnInit() {
     this.buildForm();
   }
 
-  onSubmit(form) {
-    this.comment.userName = form.value;
-    this.comment.commentText = form.value;
+  onSubmit(commentForm: FormGroup) {
+    this.comment.userName = commentForm.value.userName;
+    this.comment.commentText = commentForm.value.commentText;
+    this.comment.date = new Date();
+
+    if(!this.comment.id) {
+      this.service.addComment(this.comment).subscribe();
+    }
   }
 
   private buildForm(){
