@@ -15,7 +15,14 @@ export class CommentsGridComponent implements OnInit {
   @Input()
   public comments: CommentModel[];
 
+  @Input()
+  public currentComment: CommentModel;
+
   ngOnInit() {
     this.commentService.getComments().subscribe(comments => this.comments = comments);
+  }
+
+  public getCurrentComment(id: string) {
+    this.commentService.getComment(id).subscribe(comment => this.currentComment = comment)
   }
 }
