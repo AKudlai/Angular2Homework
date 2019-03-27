@@ -1,0 +1,12 @@
+<div class="container">
+  <div *ngFor="let comment of comments">
+      <div>
+        <button (click)="getCurrentComment(comment.id)">Edit</button>
+        <button>Delete</button>
+      </div>
+    ID: {{comment.id}} <br />
+    Name: {{comment.userName}}<br />
+    Text: {{comment.commentText}}<br />
+    Date: {{comment.date}}<br />
+  </div>
+</div>

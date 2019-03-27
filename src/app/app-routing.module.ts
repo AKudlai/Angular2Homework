@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { MyTableHostComponent } from './lessons-1-4/my-table-host/my-table-host.component';
+import { CommentsViewComponent } from './comments/comments-view/comments-view.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
   {
     path: "my-table",
     component: MyTableHostComponent
-  },
+  }
 ];
 
 @NgModule({

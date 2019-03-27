@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -11,19 +11,23 @@ import { MyTableModule } from './lessons-1-4/lessons-1-4.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
+import { CommentsModule } from './comments/comments.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
     MyTableModule,
     ProductModule,
-    AdminModule
+    AdminModule,
+    CommentsModule
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuardService, CanDeactivateGuardService]
