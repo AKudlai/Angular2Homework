@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { emailValidator } from "../custom-validators/email-validator";
 
 @Component({
   selector: "app-login-form",
@@ -25,7 +26,7 @@ export class LoginFormComponent implements OnInit {
       (this.lastName = new FormControl('', Validators.required)),
       (this.email = new FormControl('', [
         Validators.required,
-        Validators.pattern('[^ @]*@[^ @]*')
+        emailValidator
       ])),
       (this.password = new FormControl('', [
         Validators.required,

@@ -65,7 +65,7 @@
         *ngIf="email.errors && (email.dirty || email.touched)"
       >
         <p *ngIf="email.errors.required">Required field.</p>
-        <p *ngIf="email.errors.pattern">Wrong email format.</p>
+        <p *ngIf="email.errors.emailValidator">Wrong email format.</p>
       </div>
     </div>
 
