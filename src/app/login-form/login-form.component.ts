@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { emailValidator } from "../custom-validators/email-validator";
+import { EmailBlacklistService } from "../custom-validators/services/email-blacklist.service";
+import { asyncEmailValidatorDep } from "../custom-validators/async-email-validator-dep";
 
 @Component({
   selector: "app-login-form",
@@ -14,7 +16,7 @@ export class LoginFormComponent implements OnInit {
   email: FormControl;
   password: FormControl;
 
-  constructor() {}
+  constructor(private emailBlackListService: EmailBlacklistService) {}
 
   ngOnInit() {
     this.CreateFormControls();
@@ -22,16 +24,12 @@ export class LoginFormComponent implements OnInit {
   }
 
   CreateFormControls() {
-    (this.firstName = new FormControl('', Validators.required)),
-      (this.lastName = new FormControl('', Validators.required)),
-      (this.email = new FormControl('', [
-        Validators.required,
-        emailValidator
-      ])),
-      (this.password = new FormControl('', [
-        Validators.required,
-        Validators.minLength(8)
-      ]));
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('', Validators.required);
+
+    this.email = new FormControl('', [Validators.required, emailValidator], asyncEmailValidatorDep(this.emailBlackListService));
+
+    this.password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   }
 
   CreateForm() {
