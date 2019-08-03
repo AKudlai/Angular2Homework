@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit, AfterViewInit {
-  
+
   @ViewChild('productForm') productForm: NgForm;
 
   public product: Product;
@@ -37,43 +37,37 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
     }
   };
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: ProductService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute.params.forEach((params: Params) => {
-      let id = +params['id'];
-      this.service
-        .getProduct(id)
-        .then(result => {
-          this.product = result;
-          this.editName = this.product.name;
-          this.editPrice = this.product.price;
-          this.editCategory = this.product.category;
-        });
+    this.activatedRoute.data.forEach((data: { product: Product }) => {
+      this.product = data.product;
+      this.editName = data.product.name;
+      this.editPrice = data.product.price;
+      this.editCategory = data.product.category;
     });
-    this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
 
   ngAfterViewInit() {
-      this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
 
   onValueChanged(data?: any) {
-      if (!this.productForm) return;
-      let form = this.productForm.form;
+    if (!this.productForm) return;
+    let form = this.productForm.form;
 
-      for (let field in this.formErrors) {
-          this.formErrors[field] = '';
-          // form.get - получение элемента управления
-          let control = form.get(field);
+    for (let field in this.formErrors) {
+      this.formErrors[field] = '';
+      // form.get - получение элемента управления
+      let control = form.get(field);
 
-          if (control && control.dirty && !control.valid) {
-              let message = this.validationMessages[field];
-              for (let key in control.errors) {
-                  this.formErrors[field] += message[key] + ' ';
-              }
-          }
+      if (control && control.dirty && !control.valid) {
+        let message = this.validationMessages[field];
+        for (let key in control.errors) {
+          this.formErrors[field] += message[key] + ' ';
+        }
       }
+    }
   }
   saveProduct() {
     this.product.name = this.editName;
@@ -83,7 +77,6 @@ export class ProductDetailsComponent implements OnInit, AfterViewInit {
   }
 
   goToProducts() {
-    let pId = this.product ? this.product.id : null
-    this.router.navigate(['../', { id: pId }], { relativeTo: this.activatedRoute });
+    this.router.navigate(['../'], { relativeTo: this.activatedRoute });
   }
 }
