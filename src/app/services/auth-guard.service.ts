@@ -8,7 +8,7 @@ import { CanActivate } from '@angular/router';
 export class AuthGuardService implements CanActivate {
 
   canActivate() {
-    let value = true;
+    let value = false;
     console.log("AuthGuard canActivate return " + value);
     return value;
   }
